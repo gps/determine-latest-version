@@ -55,7 +55,7 @@ async function run() {
     return 0;
   });
   
-  setBuildVersion(tags[0]);
+  setBuildVersion(tags[0].substring(1));
 }
 
 run();
