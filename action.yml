@@ -1,0 +1,13 @@
+name: 'Determine Latest Version'
+description: 'Parses Git Tags that start with v and determines the latest version'
+author: 'Gopal Sharma <gps@surya-soft.com>'
+inputs:
+  GH_TOKEN:
+    description: GitHub Token used to interact with GitHub API
+    required: True
+outputs:
+  LATEST_BUILD_VERSION:
+    description: Latest version
+runs:
+  using: node12
+  main: index.js
