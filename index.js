@@ -8,6 +8,10 @@ function setBuildVersion(buildVersion) {
 
 async function run() {
   const token = core.getInput("GH_TOKEN");
+  var tagPrefix = core.getInput("TAG_PREFIX")
+  if (!tagPrefix) {
+    tagPrefix = "v";
+  }
   const octokit = new github.GitHub(token);
   const owner = env.GITHUB_REPOSITORY.split("/")[0];
   const repo = env.GITHUB_REPOSITORY.split("/")[1];
@@ -16,7 +20,7 @@ async function run() {
     owner,
     repo,
   });
-  const versionTagRegex = new RegExp("v(\\d+)\\.(\\d+)\\.(\\d+)$");
+  const versionTagRegex = new RegExp(`^${tagPrefix}(\\d+)\\.(\\d+)\\.(\\d+)$`);
 
   const tags = response["data"]
     .map((obj) => obj["name"])
@@ -55,7 +59,7 @@ async function run() {
     return 0;
   });
   
-  setBuildVersion(tags[0].substring(1));
+  setBuildVersion(tags[0].substring(tagPrefix.length));
 }
 
 run();

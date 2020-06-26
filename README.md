@@ -10,6 +10,16 @@ The GitHub token used to authenticate with GitHub.
 
 **Required**
 
+### `tag_prefix`
+
+Prefix to look for in version tags.
+
+**Required**
+
+**Default Value** 
+
+If unspecified, assumed to be `v`.
+
 ## Outputs
 
 ### `latest_build_version`
@@ -24,4 +34,5 @@ Latest build version found.
   id: latest_version
   with:
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    TAG_PREFIX: v
 ```
