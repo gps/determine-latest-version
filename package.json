@@ -16,7 +16,6 @@
   "homepage": "https://github.com/gps/determine-latest-version#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/github": "^2.2.0",
-    "webpack": "^5.30.0"
+    "@actions/github": "^2.2.0"
   }
 }
